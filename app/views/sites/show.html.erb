@@ -1,0 +1,46 @@
+<% content_for :tw_search_key, @site.hash_tags %>
+<%=render 'shared/sns_buttons', :url => @site.url, :twitter_text => @site.url.gsub(/http(s)?:\/\//, ''), :twitter_hash_tag => @site.hash_tag %>
+<% if notice.present? %>
+<div class="alert  alert-success fade in">
+  <a class="close" data-dismiss="alert" href="#">&times;</a>
+  <p id="notice"><%= notice %></p>
+</div>
+<% end %>
+<section id="show">
+<div>
+  <h3>Name:</h3>
+  <p><%= @site.name %></p>
+</div>
+
+<div>
+  <h3>Url:</h3>
+  <p><%= auto_link(@site.url, :link => :urls, :html => {:target => '_blank', :class => :target_blank}) %></p>
+</div>
+
+<div>
+  <h3>Description:</h3>
+  <%= simple_format auto_link(@site.description, :link => :urls, :html => {:target => '_blank'}) %>
+</div>
+
+<% if @site.repository_url.present? %>
+<div>
+  <h3>Repository Url:</h3>
+  <p><%= auto_link(@site.repository_url, :link => :urls, :html => {:target => '_blank', :class => :target_blank}) %></p>
+</div>
+<% end %>
+
+<div>
+  <h3>Creator:</h3>
+  <p><%= @site.creator %></p>
+</div>
+<% if @site.hash_tag.present? %>
+<div>
+  <h3>Has tag:</h3>
+  <%=link_to "##{@site.hash_tag.split(' ').join(' #')}", "http://twitter.com/search?q=#{CGI::escape(@site.hash_tags)}" %>
+</div>
+<% end %>
+</section>
+
+<section>
+<%= link_to edit_site_path(@site), class: ['btn btn-primary'] do %><i class="icon-pencil icon-white"></i>Edit<% end %>
+</section>

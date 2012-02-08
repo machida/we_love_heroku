@@ -1,5 +1,10 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  hello: "Hello world"
+  layouts:
+    application:
+      nav:
+        home: "Home"
+        site_add: "Add site"
+  sites:
+    index:
+      h1: "\"we love heroku\" is gallery which web service hosted on heroku."
+      description_html: "<p>Let's add web service on heroku. Share the web services.</p>"

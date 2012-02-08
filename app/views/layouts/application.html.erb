@@ -1,14 +1,81 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Gallery</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="<%= I18n.locale %>">
+  <head>
+    <meta charset="utf-8">
+    <title>we love heroku</title>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
 
-<%= yield %>
+    <!-- Le styles -->
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <!-- Le fav and touch icons -->
+    <link href="assets/favicon.ico" rel="shortcut icon">
+    <link href="assets/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="assets/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
+    <link href="assets/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
+    
+    <meta property="og:title" content="we love heroku"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="http://welove.herokuapp.com/"/>
+    <meta property="og:site_name" content="we love heroku"/>
+    <meta property="og:image" content="http://welove.herokuapp.com/assets/temp.png" />
+    <meta property="fb:admins" content="<%=FacebookConfig.admins%>" />
+    <meta property="fb:app_id" content="<%=FacebookConfig.app_id%>" />
+    <meta property="og:description" content="this site is gallery which web service hosted on heroku" />
+    <script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+    <script src="//platform.twitter.com/widgets.js"></script>
+    <%= render 'shared/ga.html.erb' %>
+  </head>
+  <body data-spy="scroll" data-target=".subnav" data-offset="50">
 
-</body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+          <div class="container">
+          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+            <span class="i-bar"></span>
+            <span class="i-bar"></span>
+            <span class="i-bar"></span>
+          </a>
+          <a class="brand" href="/">we love heroku</a>
+          <div class="container nav-collapse">
+            <ul class="nav">
+                <li><%= link_to t(".nav.home"), "/"  %></li>
+                <li><%= link_to t(".nav.site_add"), new_site_path  %></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="content">
+          <div class="row">
+            <div class="span9">
+            <%= yield %>
+            </div>
+            <div class="span3">
+              <div class="well sidebar-nav">
+                <h3>twitter search result</h3>
+                <%= render 'shared/twitter', :tw_search_key => yield(:tw_search_key) %>
+            </div>
+           </div>
+          </div>
+        </div>
+
+      <footer id="pagefooter">
+        <p>&copy; <%= link_to 'ppworks', 'http://twitter.com/ppworks' %> <%=Time.current.year%></p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <%= javascript_include_tag "application" %>
+    <%= render 'shared/fb_load_js.html.erb' %>
+  </body>
 </html>

@@ -1,0 +1,38 @@
+// Place all the styles related to the sites controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+ul.sns {
+  margin-left: 0;
+  >li {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+section#show {
+  padding-top: 15px;
+  >div {
+    >* {
+      color: #777;
+    }
+    >h3 {
+      color: #333;
+    }
+  }
+}
+
+footer#pagefooter {
+  margin-top: 60px;
+}
+
+div.hero-unit {
+  margin-top: 19px;
+  >h1 {
+    font-size: 24px;
+  }
+}
+
+.twtr-widget .twtr-img img {
+  width: auto;
+  height: auto;
+}
