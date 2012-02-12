@@ -24,6 +24,12 @@ ul.sns {
   }
 }
 
+ul.providers {
+  >li {
+    display: inline-block;
+  }
+}
+
 section#show {
   padding-top: 15px;
   >div {

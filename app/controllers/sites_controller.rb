@@ -41,7 +41,8 @@ class SitesController < ApplicationController
     @site.user_id = current_user.id if user_signed_in?
     respond_to do |format|
       if @site.save
-        format.html { redirect_to @site, notice: 'Site was successfully created.' }
+        url = (user_signed_in?)? current_user_path : @site
+        format.html { redirect_to url, notice: 'Site was successfully created.' }
         format.json { render json: @site, status: :created, location: @site }
       else
         format.html { render action: "new" }

@@ -1,4 +1,13 @@
 <%= render 'users/user', :user => @user %>
+<ul class="unstyled providers">
+  <% @user.providers.each do |provider| %>
+    <li>
+      <%= link_to '', rel: 'tooltip', :'data-title' => provider.name, :'data-placement' => 'bottom' do %>
+        <%= image_tag "icon_#{provider.name}.png", :alt => provider.name, :title => provider.name %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
 <%= render 'shared/login_button'%>
 <section>
   <h1><%= t('.sites.h1', :user_name => @user.name)%></h1>
