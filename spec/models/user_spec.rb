@@ -15,6 +15,11 @@ describe User do
       'credentials' => {
         'token' => 'token',
         'secret' => 'secret'
+      },
+      'extra' => {
+        'raw_info' => {
+          'avatar_url' => new_user.image
+        }
       }
     }
   }
@@ -27,5 +32,8 @@ describe User do
   end
   describe 'twitter login' do
     it { User.find_for_twitter_oauth(auth, nil).should be_present }
+  end
+  describe 'github login' do
+    it { User.find_for_github_oauth(auth, nil).should be_present }
   end
 end

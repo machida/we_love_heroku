@@ -18,6 +18,14 @@
       <% end %>
     </li>
     <% end %>
+    <% if !user_signed_in? || !current_user.has_provider?(Provider.github.id) %>
+    <li>
+      <%=link_to user_omniauth_authorize_path(:github), :class => 'btn' do %>
+        <i class="icon-plus"></i>
+        <%= t("shared._login_button.github.#{locale_key}") %>
+      <% end %>
+    </li>
+    <% end %>
   </ul>
 </section>
 <% end %>

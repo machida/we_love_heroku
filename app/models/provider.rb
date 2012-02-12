@@ -10,6 +10,10 @@ class Provider < ActiveRecord::Base
     self.find_by_provider_name 'twitter'
   end
   
+  def self.github
+    self.find_by_provider_name 'github'
+  end
+  
   private
   def self.find_by_provider_name provider_name
     Rails.cache.fetch("model_provider_#{provider_name}", :expires_in => 365.days) do

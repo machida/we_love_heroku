@@ -28,6 +28,9 @@ ja:
       twitter: 
         new: "Twitterアカウントでログイン"
         add: "Twitterアカウントを追加"
+      github: 
+        new: "Githubアカウントでログイン"
+        add: "Githubアカウントを追加"
   users:
     current:
       withdraw:

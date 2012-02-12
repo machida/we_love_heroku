@@ -28,6 +28,9 @@ en:
       twitter: 
         new: "Login with Twitter account"
         add: "Connect with Twitter account"
+      github: 
+        new: "Login with Github account"
+        add: "Connect with Github account"
   users:
     current:
       withdraw:
