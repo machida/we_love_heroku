@@ -1,0 +1,15 @@
+h1. we love heroku
+
+see http://welove.herokuapp.com
+
+h2. rails s
+
+<pre>
+FB_ADMINS={your_facebook_id} FB_APP_ID={your_application_id} bundle exec rails s
+</pre>
+
+h2. test
+
+<pre>
+FB_ADMINS={your_facebook_id} FB_APP_ID={your_application_id} bundle exec guard start
+</pre>
