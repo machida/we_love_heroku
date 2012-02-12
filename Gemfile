@@ -13,6 +13,12 @@ gem 'jquery-rails'
 gem "twitter-bootstrap-rails", "~> 2.0rc0"
 gem 'rails_autolink'
 gem 'kaminari'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'fb_graph'
+gem 'twitter'
+gem 'devise'
 group :test, :development do
   gem 'mysql2'
   gem 'heroku'

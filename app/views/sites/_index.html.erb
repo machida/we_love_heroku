@@ -1,0 +1,22 @@
+<div id="sites">
+  <% if sites.present? %>
+  <table class="table table-striped">
+    <tr>
+      <th>Name</th>
+      <th>Creator</th>
+      <th>Likes</th>
+      <th>Tweets</th>
+      <th></th>
+    </tr>
+  
+  <% sites.each do |site| %>
+    <%= render 'sites/site', :site => site %>
+  <% end %>
+  </table>
+  <%= paginate sites %>
+  <% else %>
+  <p class="alert alert-info">
+    <%= t('sites._index.nothing_html')%>
+  </p>
+  <% end %>
+</div>

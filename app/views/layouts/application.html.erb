@@ -13,22 +13,20 @@
     <!-- Le styles -->
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <!-- Le fav and touch icons -->
-    <link href="assets/favicon.ico" rel="shortcut icon">
-    <link href="assets/apple-touch-icon.png" rel="apple-touch-icon">
-    <link href="assets/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
-    <link href="assets/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
-    
+    <link href="/assets/favicon.ico" rel="shortcut icon">
+    <link href="/assets/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="/assets/apple-touch-icon-precomposed.png " rel="apple-touch-icon">
     <meta property="og:title" content="we love heroku"/>
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="http://welove.herokuapp.com/"/>
     <meta property="og:site_name" content="we love heroku"/>
-    <meta property="og:image" content="http://welove.herokuapp.com/assets/temp.png" />
+    <meta property="og:image" content="http://welove.herokuapp.com/assets/weloveheroku.png" />
     <meta property="fb:admins" content="<%=FacebookConfig.admins%>" />
     <meta property="fb:app_id" content="<%=FacebookConfig.app_id%>" />
     <meta property="og:description" content="this site is gallery which web service hosted on heroku" />
     <script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
     <script src="//platform.twitter.com/widgets.js"></script>
-    <%= render 'shared/ga.html.erb' %>
+    <%= render 'shared/ga' %>
   </head>
   <body data-spy="scroll" data-target=".subnav" data-offset="50">
 
@@ -40,11 +38,28 @@
             <span class="i-bar"></span>
             <span class="i-bar"></span>
           </a>
-          <a class="brand" href="/">we love heroku</a>
+          <a class="brand" href="/"><%=image_tag 'title.png', :alt => 'we love heroku' %></a>
           <div class="container nav-collapse">
             <ul class="nav">
-                <li><%= link_to t(".nav.home"), "/"  %></li>
-                <li><%= link_to t(".nav.site_add"), new_site_path  %></li>
+                <li class="<%=(request.path == root_path ? 'active': '')%>"><%= link_to t(".nav.home"), "/"  %></li>
+                <li class="<%=(request.path == new_site_path ? 'active': '')%>"><%= link_to t(".nav.site_add"), new_site_path  %></li>
+            </ul>
+            <ul class="nav pull-right">
+              <% if user_signed_in? %>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <%= image_tag current_user.image, :size => '20x20', :class => :face %>
+                  <%= current_user.name %>
+                  <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="<%=(request.path == user_path ? 'active': '')%>"><%=link_to t('.nav.user'), current_user_path%></li>
+                  <li><%= link_to t('.nav.logout'), destroy_user_session_path, :method => :delete %></li>
+                </ul>
+              </li>
+              <% else %>
+                <li><%= link_to t('.nav.login'), login_user_path %></li>
+              <% end %>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -55,7 +70,13 @@
         <div class="content">
           <div class="row">
             <div class="span9">
-            <%= yield %>
+              <% if notice.present? %>
+              <div class="alert  alert-success fade in">
+                <a class="close" data-dismiss="alert" href="#">&times;</a>
+                <p id="notice"><%= notice %></p>
+              </div>
+              <% end %>
+              <%= yield %>
             </div>
             <div class="span3">
               <div class="well sidebar-nav">
@@ -76,6 +97,6 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <%= javascript_include_tag "application" %>
-    <%= render 'shared/fb_load_js.html.erb' %>
+    <%= render 'shared/fb_load_js' %>
   </body>
 </html>

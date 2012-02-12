@@ -1,0 +1,5 @@
+<%=render 'users/user', :user => @user %>
+<section>
+  <h1><%= t('.sites.h1', :user_name => @user.name)%></h1>
+  <%=render 'sites/index', :sites => @sites %>
+</section>

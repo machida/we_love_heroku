@@ -9,6 +9,8 @@ class Site < ActiveRecord::Base
   validates_url_format_of :url
   validates_url_format_of :repository_url, :allow_nil => true, :allow_blank => true
   
+  belongs_to :user
+  
   def hash_tags
     '#' + self.hash_tag.split(' ').join(' #')
   end

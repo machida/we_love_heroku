@@ -3,8 +3,39 @@ ja:
     application:
       nav:
         home: "ホーム"
-        site_add: "サイト追加"
+        site_add: "サイトを登録する"
+        user: "マイページ"
+        login: "ログイン"
+        logout: "ログアウト"
   sites:
+    _index:
+      nothing_html: "未だ何も登録されていません。<a href=\"/sites/new\" class=\"btn\">サイトを登録する</a>"
     index:
       h1: "we love herokuはherokuで作ったサービスのギャラリー"
       description_html: "<p>herokuで作ったサービスを登録したり、いいね！して応援しよう。</p>"
+    show:
+      delete_confirm: "本当に削除していいですか？"
+    destroy:
+      completed: "削除しました。"
+  shared:
+    _login_button:
+      description: 
+        new: "FacebookまたはTwitterアカウントでログインすることでサイトの編集や削除などの管理が出来るようになります。"
+        add: "更に別のアカウントと紐付けることも可能です。"
+      facebook:
+        new: "Facebookアカウントでログイン"
+        add: "Facebookアカウントを追加"
+      twitter: 
+        new: "Twitterアカウントでログイン"
+        add: "Twitterアカウントを追加"
+  users:
+    current:
+      withdraw:
+        label: "退会"
+        description: "退会処理をすると、ログイン時に作成したサイト情報が全て削除されます。本当に退会しますか？"
+        completed: "退会しました。"
+      sites:
+        h1: "あなたの登録したサイト一覧"
+    show:
+      sites:
+        h1: "%{user_name}さんが登録したサイト一覧"

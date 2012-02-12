@@ -1,11 +1,5 @@
 <% content_for :tw_search_key, @site.hash_tags %>
 <%=render 'shared/sns_buttons', :url => @site.url, :twitter_text => @site.url.gsub(/http(s)?:\/\//, ''), :twitter_hash_tag => @site.hash_tag %>
-<% if notice.present? %>
-<div class="alert  alert-success fade in">
-  <a class="close" data-dismiss="alert" href="#">&times;</a>
-  <p id="notice"><%= notice %></p>
-</div>
-<% end %>
 <section id="show">
 <div>
   <h3>Name:</h3>
@@ -39,8 +33,21 @@
   <%=link_to "##{@site.hash_tag.split(' ').join(' #')}", "http://twitter.com/search?q=#{CGI::escape(@site.hash_tags)}" %>
 </div>
 <% end %>
+
+<% if @site.user.present? %>
+<div>
+  <h3>Registerd By</h3>
+  <%= render 'users/user', :user => @site.user %>
+</div>
+<% end %>
 </section>
 
+<% if user_signed_in? && current_user.id == @site.user_id %>
 <section>
 <%= link_to edit_site_path(@site), class: ['btn btn-primary'] do %><i class="icon-pencil icon-white"></i>Edit<% end %>
 </section>
+<section>
+<%= link_to site_path(@site), class: ['btn btn-danger'], :method => :delete, :confirm => t('.delete_confirm') do %><i class="icon-trash icon-white"></i>Delete<% end %>
+</section>
+
+<% end %>

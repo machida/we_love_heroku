@@ -1,0 +1,10 @@
+<%= render 'users/user', :user => @user %>
+<%= render 'shared/login_button'%>
+<section>
+  <h1><%= t('.sites.h1', :user_name => @user.name)%></h1>
+  <%=render 'sites/index', :sites => @sites %>
+</section>
+
+<section class="withdraw">
+<%= link_to t('.withdraw.label'), user_path, :method => :delete, :confirm => t('.withdraw.description'), :class => "btn btn-danger"%>
+</section>

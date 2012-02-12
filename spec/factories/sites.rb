@@ -6,5 +6,6 @@ FactoryGirl.define do
     creator 'test'
     hash_tag '#test'
     repository_url 'http://example.org'
+    user_id 1
   end
 end

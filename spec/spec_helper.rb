@@ -35,11 +35,16 @@ Spork.prefork do
     # automatically. This will be the default behavior in future versions of
     # rspec-rails.
     config.infer_base_class_for_anonymous_controllers = false
+    
+    # devise
+    config.include Devise::TestHelpers, :type => :controller
   end
+  system("rake db:seed RAILS_ENV=test")
 end
 
 Spork.each_run do
   # This code will be run each time you run your specs.
-
+  FactoryGirl.factories.clear
+  Dir[Rails.root.join("spec/factories/**/*.rb")].each{|f| load f}
 end
 

@@ -1,6 +1,21 @@
 // Place all the styles related to the sites controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+img.face {
+  border-radius: 3px;
+}
+
+a.brand {
+  padding: 0 20px !important;
+  line-height: 0 !important;
+}
+
+li.dropdown {
+  img.face {
+    vertical-align: bottom;
+  }
+}
+
 ul.sns {
   margin-left: 0;
   >li {
@@ -17,6 +32,18 @@ section#show {
     }
     >h3 {
       color: #333;
+    }
+  }
+}
+
+section.login {
+  padding-top :0;
+  ul {
+    padding: 15px;
+    border-radius: 5px;
+    border: 2px solid rgba(0, 0, 0, 0.05);;
+    >li {
+      display: inline-block;
     }
   }
 }

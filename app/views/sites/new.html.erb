@@ -1,2 +1,5 @@
+<% unless user_signed_in? %>
+  <%= render 'shared/login_button' %>
+<% end %>
 <h1>New site</h1>
 <%= render 'form' %>

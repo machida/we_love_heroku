@@ -1,13 +1,9 @@
 class SitesController < ApplicationController
+  before_filter :authenticate_user!, :only => [:edit, :update, :destroy]
   # GET /sites
   # GET /sites.json
   def index
     @sites = Site.order('id DESC').page(params[:page]).per(25)
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @sites }
-    end
   end
 
   # GET /sites/1
@@ -26,6 +22,7 @@ class SitesController < ApplicationController
   def new
     @site = Site.new
     @site.url = 'http://'
+    @site.creator = current_user.name if user_signed_in?
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @site }
@@ -34,14 +31,14 @@ class SitesController < ApplicationController
 
   # GET /sites/1/edit
   def edit
-    @site = Site.find(params[:id])
+    @site = current_user.sites.find(params[:id])
   end
 
   # POST /sites
   # POST /sites.json
   def create
     @site = Site.new(params[:site])
-
+    @site.user_id = current_user.id if user_signed_in?
     respond_to do |format|
       if @site.save
         format.html { redirect_to @site, notice: 'Site was successfully created.' }
@@ -56,7 +53,7 @@ class SitesController < ApplicationController
   # PUT /sites/1
   # PUT /sites/1.json
   def update
-    @site = Site.find(params[:id])
+    @site = current_user.sites.find(params[:id])
 
     respond_to do |format|
       if @site.update_attributes(params[:site])
@@ -72,11 +69,11 @@ class SitesController < ApplicationController
   # DELETE /sites/1
   # DELETE /sites/1.json
   def destroy
-    @site = Site.find(params[:id])
+    @site = current_user.sites.find(params[:id])
     @site.destroy
 
     respond_to do |format|
-      format.html { redirect_to sites_url }
+      format.html { redirect_to sites_url, :notice => t('sites.destroy.completed') }
       format.json { head :no_content }
     end
   end

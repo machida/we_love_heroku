@@ -8,4 +8,8 @@ module ApplicationHelper
         uri.sub '{locale}', 'en_US'
     end
   end
+  
+  def locale_key
+    user_signed_in? ? 'add' : 'new'
+  end
 end

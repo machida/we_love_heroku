@@ -4,7 +4,38 @@ en:
       nav:
         home: "Home"
         site_add: "Add site"
+        user: "My Page"
+        login: "Login"
+        logout: "Logout"
   sites:
+    _index:
+      nothing_html: "no sites registerd yet.<a href=\"/sites/new\" class=\"btn\">Add site</a>"
     index:
       h1: "\"we love heroku\" is gallery which web service hosted on heroku."
       description_html: "<p>Let's add web service on heroku. Share the web services.</p>"
+    show:
+      delete_confirm: "Are you really delete?"
+    destroy:
+      completed: "delete site completed"
+  shared:
+    _login_button:
+      description: 
+        new: "Login with facebook or twitter account to manage your sites."
+        add: "you can connected other provider's account."
+      facebook:
+        new: "Login with Facebook account"
+        add: "Connect with Facebook account"
+      twitter: 
+        new: "Login with Twitter account"
+        add: "Connect with Twitter account"
+  users:
+    current:
+      withdraw:
+        label: "delete your account"
+        description: "If you withdraw, your sites info are all delete. Are you really want to withdraw?"
+        completed: "your account was completely deleted."
+      sites:
+        h1: "Sites list which you added."
+    show:
+      sites:
+        h1: "Sites list which %{user_name} added."
